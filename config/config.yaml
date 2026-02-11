@@ -1,0 +1,42 @@
+# Stock tickers to track
+tickers:
+  - AAPL
+  - GOOGL
+  - MSFT
+  - AMZN
+  - TSLA
+  - NVDA
+  - META
+  - NFLX
+
+# Data settings
+data:
+  historical_start: "2022-01-01"
+  interval: "1d"
+  
+# Kafka settings
+kafka:
+  bootstrap_servers: "localhost:9092"
+  schema_registry: "http://localhost:8081"
+  topics:
+    quotes: "market.quotes"
+    ohlcv_1min: "market.ohlcv.1min"
+    anomalies: "market.anomalies"
+
+# MinIO/S3 settings
+storage:
+  endpoint: "http://localhost:9000"
+  access_key: "minioadmin"
+  secret_key: "minioadmin"
+  buckets:
+    bronze: "bronze"
+    silver: "silver"
+    gold: "gold"
+
+# Streaming settings
+streaming:
+  fetch_interval_seconds: 60  # Fetch every 60 seconds
+  
+# Batch settings
+batch:
+  schedule: "0 18 * * *"  # Daily at 6 PM
