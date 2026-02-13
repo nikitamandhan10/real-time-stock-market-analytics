@@ -203,7 +203,6 @@ services:
       - stock-network
 
   # ==================== APACHE SPARK ====================
-  # ==================== APACHE SPARK ====================
   spark-master:
     image: apache/spark:3.5.0-scala2.12-java11-python3-ubuntu
     container_name: spark-master
@@ -242,12 +241,15 @@ services:
     networks:
       - stock-network
 
-  # ==================== APACHE FLINK ====================
+ # ==================== APACHE FLINK ====================
   flink-jobmanager:
-    image: flink:1.18.0-scala_2.12-java11
+    build:
+      context: ./flink
+      dockerfile: Dockerfile
+    platform: linux/arm64  # Add this line
     container_name: flink-jobmanager
     ports:
-      - "8082:8081"
+      - "8083:8081"
     command: jobmanager
     environment:
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
@@ -257,22 +259,28 @@ services:
       - stock-network
 
   flink-taskmanager:
-    image: flink:1.18.0-scala_2.12-java11
+    build:
+      context: ./flink
+      dockerfile: Dockerfile
+    platform: linux/arm64  # Add this line
     container_name: flink-taskmanager
     depends_on:
       - flink-jobmanager
     command: taskmanager
     environment:
       - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
+      - TASK_MANAGER_NUMBER_OF_TASK_SLOTS=4
     volumes:
       - ./flink/jobs:/opt/flink-jobs
     networks:
       - stock-network
 
+# ==================== NETWORKS (AT ROOT LEVEL) ====================
 networks:
   stock-network:
     driver: bridge
 
+# ==================== VOLUMES (AT ROOT LEVEL) ====================
 volumes:
   minio_data:
   postgres_data:
