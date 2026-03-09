@@ -22,7 +22,7 @@ class MarketDataProducer:
     """Produces real-time stock market data to Kafka"""
     
     def __init__(self, config_path='config/config.yaml'):
-        """Initialize producer with configuration"""
+        #Initialize producer with configuration
         with open(config_path, 'r') as f:
             self.config = yaml.safe_load(f)
         
