@@ -21,7 +21,6 @@ def detect_price_spike(current_price, avg_price, threshold=0.05):
     change_pct = abs(current_price - avg_price) / avg_price
     return change_pct > threshold
 
-
 @udf(result_type=DataTypes.BOOLEAN())
 def detect_volume_surge(current_volume, avg_volume, threshold=2.0):
     """Detect if volume surge exceeds threshold (2x average)"""
