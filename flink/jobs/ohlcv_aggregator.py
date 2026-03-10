@@ -1,8 +1,6 @@
 """
 Apache Flink job to aggregate tick data into OHLCV candles
-FIXED VERSION - Non-blocking with proper error handling
 """
-
 from pyflink.table import TableEnvironment, EnvironmentSettings
 import logging
 import sys
