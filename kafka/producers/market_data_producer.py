@@ -63,7 +63,6 @@ class MarketDataProducer:
                 'close': float(latest['Close']),
                 'volume': int(latest['Volume'])
             }
-            
             return quote
             
         except Exception as e:
