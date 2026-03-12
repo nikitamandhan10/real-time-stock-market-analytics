@@ -1,7 +1,6 @@
 """
 Real-time market data producer - fetches stock quotes and sends to Kafka
 """
-
 import time
 import json
 import yaml
