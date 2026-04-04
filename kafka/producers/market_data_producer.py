@@ -16,7 +16,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 class MarketDataProducer:
     """Produces real-time stock market data to Kafka"""
     
