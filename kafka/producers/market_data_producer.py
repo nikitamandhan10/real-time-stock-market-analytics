@@ -68,7 +68,7 @@ class MarketDataProducer:
         except Exception as e:
             logger.error(f"Error fetching {ticker}: {str(e)}")
             return None
-    
+            
     def send_to_kafka(self, topic, key, value):
         """Send message to Kafka topic"""
         try:
