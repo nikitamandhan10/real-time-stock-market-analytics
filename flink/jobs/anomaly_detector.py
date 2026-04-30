@@ -11,7 +11,6 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
 @udf(result_type=DataTypes.BOOLEAN())
 def detect_price_spike(current_price, avg_price, threshold=0.05):
     """Detect if price spike exceeds threshold (5%)"""
