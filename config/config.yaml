@@ -8,7 +8,7 @@ tickers:
   - NVDA
   - META
   - NFLX
-
+  
 # Data settings
 data:
   historical_start: "2022-01-01"
